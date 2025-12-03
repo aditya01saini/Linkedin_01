@@ -22,7 +22,7 @@ const PostSchema = new mongoose.Schema({
     default: Date.now,
   },
   media: {
-    typr: String,
+    type: String,
     default: "",
   },
   active: {
