@@ -30,7 +30,6 @@ const workSchema = new mongoose.Schema({
   },
 });
 
-
 const ProfileSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -40,6 +39,12 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+
+  currentPosition: {
+    type: String,
+    default: "",
+  },
+
   pastWork: {
     type: [workSchema],
     default: [],
@@ -49,7 +54,6 @@ const ProfileSchema = new mongoose.Schema({
     default: [],
   },
 });
-
 
 const Profile = mongoose.model("Profile", ProfileSchema);
 export default Profile;
