@@ -3,10 +3,10 @@ Content-Type: application/json
 
 
 {
-  "username": "shubham06",
-  "password": "shubham",
-  "email": "shubham@gmail.com",
-  "name": "shubham"
+  "username": "shubham076789",
+  "password": "shubham076789",
+  "email": "shubham076789@gmail.com",
+  "name": "shubham906789"
 }
 
 ###
@@ -17,8 +17,47 @@ Content-Type: application/json
 
 {
 
-"email": "shubham@gmail.com",
-"password": "shubham"
+"email": "shubham076789@gmail.com",
+"password": "shubham076789"
   
 }
 
+
+###
+
+
+GET http://localhost:9090/get_user_and_Profile HTTP/1.1
+Content-Type: application/json
+
+
+ {
+   "token": "a3dd6103ebee95d154e57fbffb66cc8537bd7eb54ecfe641402b0e4bad63d8ca"
+ }
+
+
+###
+
+POST http://localhost:9090/update_profile_data HTTP/1.1
+Content-Type: application/json
+
+
+ {
+   "token": "a3dd6103ebee95d154e57fbffb66cc8537bd7eb54ecfe641402b0e4bad63d8ca",
+   "bio": "djcjdcjc",
+   "currentPosition": "CTO",
+   "pastWork": [
+    {
+      "company": "microsoft",
+      "position": "CTO",
+      "years": "4+"
+    }
+   ],
+
+   "education": [
+    {
+      "school": "qums",
+      "degree": "B.tech",
+      "fileOfStudy": "2015-2019"
+    }
+   ]
+ }
