@@ -18,7 +18,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     reset: () => initialState,
-    handdleLoginUser: (state) => {
+    handleLoginUser: (state) => {
       state.message = "hello";
     },
   },
