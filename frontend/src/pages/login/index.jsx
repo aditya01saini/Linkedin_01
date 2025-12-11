@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./style.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { registerUser } from "../../config/redux/action/authAction";
+import { loginUser, registerUser } from "../../config/redux/action/authAction";
+import { emptyMessage } from "@/config/redux/reducer/authReducer";
+
 
 export default function LoginComponent() {
   const authState = useSelector((state) => state.auth);
@@ -21,13 +23,29 @@ export default function LoginComponent() {
     if (authState.loggedIn) {
       router.push("/dashboard");
     }
-  } , [authState.loggedIn]);
+  } , [authState.loggedIn])
+
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      router.push("/dashboard");
+    }
+  }, [])
+
+  useEffect(() => {
+    dispatch(emptyMessage());
+  }, [userLoginMethod]);
 
   const handleRegister = () => {
-    console.log("wlkjhfefhe");
+    console.log("Register..");
     dispatch(registerUser({username, password, email, name}));
 
   };
+
+  const handleLogin =() => {
+    console.log("login...");
+    dispatch(loginUser({email, password}))
+
+  }
 
   return (
     <UserLayout>
@@ -40,8 +58,10 @@ export default function LoginComponent() {
             </p>
             <p style={{color: authState.isError ? "red" : "green"}}>{authState.message.message}</p>
 
+
+           
             <div className={styles.inputContainers}>
-              <div className={styles.inputRow}>
+              {!userLoginMethod && <div className={styles.inputRow}>
                 <input onChange={(e) => setUsername(e.target.value)}
                   className={styles.inputField}
                   type="text"
@@ -52,7 +72,7 @@ export default function LoginComponent() {
                   type="text"
                   placeholder="name"
                 />
-              </div>
+              </div>}
               <input onChange={(e) => setEmailAddress(e.target.value)}
                 className={styles.inputField}
                 type="email"
@@ -66,7 +86,7 @@ export default function LoginComponent() {
 
               <div  onClick={() => {
                 if(userLoginMethod) {
-
+                  handleLogin();
                 }else{
                   handleRegister();
                 }
@@ -76,7 +96,19 @@ export default function LoginComponent() {
             </div>
           </div>
 
-          <div className={styles.cardContainer__right}></div>
+          <div className={styles.cardContainer__right}>
+
+              { userLoginMethod ? <p>Don't have an Account</p> : <p>Already have an account?</p> }
+              
+              <div  onClick={() => {
+               setUserLoginMethod (!userLoginMethod)
+              }} style={{color: "black", textAlign: "center"}}className={styles.buttonWithOutline}>
+                <p>{userLoginMethod ? "Sign Up" : "Sign In"}</p>
+              </div>
+
+            
+           
+          </div>
         </div>
       </div>
     </UserLayout>
