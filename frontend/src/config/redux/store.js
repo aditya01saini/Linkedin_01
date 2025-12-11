@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { actionAsyncStorage } from "next/dist/server/app-render/action-async-storage.external"
+// import { actionAsyncStorage } from "next/dist/server/app-render/action-async-storage.external"
 import authReducer from "./reducer/authReducer"
+import postReducer from "./reducer/postReducer"
 
 // 
 // steps for state management
@@ -11,6 +12,7 @@ import authReducer from "./reducer/authReducer"
 
 export const store = configureStore({
     reducer: {
-        auth: authReducer
+        auth: authReducer,
+        posts: postReducer
     }
 })
