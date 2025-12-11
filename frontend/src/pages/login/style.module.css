@@ -55,13 +55,7 @@
      font-size: 2rem;
 }
 
-.cardContainer__right{
-    flex: 0.4;
-    background: rgba(9, 9, 223, 0.697);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .buttonWithOutline{
     padding: 0.8rem 1.3rem;
@@ -72,3 +66,16 @@
 
 }
 
+.cardContainer__right{
+    flex: 0.4;
+    background: rgba(9, 9, 223, 0.697);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding-inline: 1.2rem;
+
+}
