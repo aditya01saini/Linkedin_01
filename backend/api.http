@@ -3,10 +3,10 @@ Content-Type: application/json
 
 
 {
-  "username": "shubham076789",
-  "password": "shubham076789",
-  "email": "shubham076789@gmail.com",
-  "name": "shubham906789"
+  "username": "saini1",
+  "password": "saini1",
+  "email": "saini1@gmail.com",
+  "name": "saini1"
 }
 
 ###
@@ -17,8 +17,8 @@ Content-Type: application/json
 
 {
 
-"email": "shubham076789@gmail.com",
-"password": "shubham076789"
+"email": "saini1@gmail.com",
+"password": "saini1"
   
 }
 
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 
  {
-   "token": "a3dd6103ebee95d154e57fbffb66cc8537bd7eb54ecfe641402b0e4bad63d8ca"
+   "token": "c941161f575e7aadd3c87e8661cec6a45429b3b89805313ace2bbb8928a55f65"
  }
 
 
@@ -42,8 +42,8 @@ Content-Type: application/json
 
 
  {
-   "token": "a3dd6103ebee95d154e57fbffb66cc8537bd7eb54ecfe641402b0e4bad63d8ca",
-   "bio": "djcjdcjc",
+   "token": "c941161f575e7aadd3c87e8661cec6a45429b3b89805313ace2bbb8928a55f65",
+   "bio": "saini234567",
    "currentPosition": "CTO",
    "pastWork": [
     {
