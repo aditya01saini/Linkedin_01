@@ -1,5 +1,7 @@
 import { getAboutUser } from "@/config/redux/action/authAction";
 import { getAllPosts } from "@/config/redux/action/postAction";
+import DashboardLayout from "@/layout/DashboardLayout";
+import UserLayout from "@/layout/UserLayout";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +10,7 @@ export default function dashboard() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const authState = useSelector((state) => {state.auth});
+  const authState = useSelector((state) => state.auth);
   const [isTokenThere, setIsTokenThere] = useState(false);
 
   useEffect(() => {
@@ -16,7 +18,7 @@ export default function dashboard() {
       router.push("/login");
     }
     setIsTokenThere(true);
-  }, []);
+  })
 
   useEffect(() => {
     if (isTokenThere) {
@@ -25,7 +27,16 @@ export default function dashboard() {
     }
   }, [isTokenThere]);
 
-  return <div>
-    hey
-  </div>;
+  return (
+    <UserLayout>
+
+    <DashboardLayout>
+      <div>
+        <h1>Dashboard</h1>
+      </div>
+    </DashboardLayout>
+
+    </UserLayout>
+    
+  );
 }
