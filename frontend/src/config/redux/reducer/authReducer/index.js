@@ -1,8 +1,8 @@
-import { getAboutUser, loginUser, registerUser } from "../../action/authAction"
+import { getAboutUser, getAllUsers, loginUser, registerUser } from "../../action/authAction"
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: [],
+  user: undefined,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -12,6 +12,8 @@ const initialState = {
   profileFetched: false,
   connections: [],
   connectionRequest: [],
+  all_users: [],
+  all_profiles_fetched: false,
 };
 
 const authSlice = createSlice({
@@ -45,6 +47,7 @@ const authSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.loggedIn = true;
+        // state.profileFetched = true;////
         state.message = "Login is Successfull";
       })
 
@@ -72,12 +75,19 @@ const authSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(getAboutUser.fulfilled, (state, action) => {
+         console.log("PROFILE PAYLOAD", action.payload);
         state.isLoading = false;
         state.isError = false;
         state.profileFetched = true;
         state.user = action.payload.profile;
         
       
+      })
+      .addCase(getAllUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.all_profiles_fetched = true;
+        state.all_users = action.payload.profiles
       })
   },
 });
