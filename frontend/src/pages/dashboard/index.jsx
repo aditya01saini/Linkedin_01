@@ -1,12 +1,12 @@
-import { getAboutUser } from "@/config/redux/action/authAction";
+import { getAboutUser, getAllUsers } from "@/config/redux/action/authAction";
 import { getAllPosts } from "@/config/redux/action/postAction";
 import DashboardLayout from "@/layout/DashboardLayout";
 import UserLayout from "@/layout/UserLayout";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { setTokenIsNotThere } from "@/config/redux/reducer/authReducer";
-// import { setTokenIsThere } from "@/config/redux/reducer/authReducer";
+import styles from "./index.module.css";
+import { BASE_URL } from "@/config";
 
 export default function dashboard() {
   const router = useRouter();
@@ -22,18 +22,46 @@ export default function dashboard() {
       dispatch(getAllPosts());
       dispatch(getAboutUser({ token: localStorage.getItem("token") }));
     }
+
+     if(!authState.all_profiles_fetched) {
+        dispatch(getAllUsers());
+      }
   }, [authState.isTokenThere]);
 
-  return (
+if(authState.user){
+
+
+
+  return (   // get User and profile
     <UserLayout>
 
     <DashboardLayout>
-      <div>
-        <h1>Dashbord</h1>
+      <div className="scrollComponent">
+        <div className={styles.createPostContainer}>
+          <img src={`${BASE_URL}/${authState.user.userId.profilePicture}`} alt="" />
+
+
+        </div>
       </div>
+
+  
     </DashboardLayout>
 
     </UserLayout>
     
-  );
+  )
+ 
+
+  } else {
+
+    return (
+      <UserLayout>
+        <DashboardLayout>
+          <h2>Loading</h2>
+        </DashboardLayout>
+      </UserLayout>
+    )
+
+
+}
 }
