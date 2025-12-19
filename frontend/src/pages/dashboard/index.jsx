@@ -15,53 +15,78 @@ export default function dashboard() {
   const authState = useSelector((state) => state.auth);
   // const [isTokenThere, setIsTokenThere] = useState(false);
 
-
-
   useEffect(() => {
     if (authState.isTokenThere) {
       dispatch(getAllPosts());
       dispatch(getAboutUser({ token: localStorage.getItem("token") }));
     }
 
-     if(!authState.all_profiles_fetched) {
-        dispatch(getAllUsers());
-      }
+    if (!authState.all_profiles_fetched) {
+      dispatch(getAllUsers());
+    }
   }, [authState.isTokenThere]);
 
-if(authState.user){
+  const [postContent, setPostContent] = useState("");
+  const [fileContent, setFileContent] = useState();
+  const handleUpload = async () => {
+    await dispatch(createPost({file: fileContent, body: postContent}));
 
+  }
 
-
-  return (   // get User and profile
-    <UserLayout>
-
-    <DashboardLayout>
-      <div className="scrollComponent">
-        <div className={styles.createPostContainer}>
-          <img src={`${BASE_URL}/${authState.user.userId.profilePicture}`} alt="" />
-
-
-        </div>
-      </div>
-
-  
-    </DashboardLayout>
-
-    </UserLayout>
-    
-  )
- 
-
+  if (authState.user) {
+    return (
+      // get User and profile
+      <UserLayout>
+        <DashboardLayout>
+          <div className={styles.scrollComponent}>
+            <div className={styles.createPostContainer}>
+              <img
+                className={styles.userProfile}
+                src={`${BASE_URL}/${authState.user.userId.profilePicture}`}
+                alt=""
+              />
+              <textarea
+                onChange={(e) => setPostContent(e.currentTarget.value)}
+                value={postContent}
+                placeholder={"What's in your mind?"}
+                className={styles.textAreaOfContent}
+                name=""
+                id=""
+              ></textarea>
+              <label htmlFor="fileUpload">
+                <div className={styles.Fab}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4.5v15m7.5-7.5h-15"
+                    />
+                  </svg>
+                </div>
+              </label>
+              <input  onChange={(e) => setFileContent(e.target.files[0])}type="file" hidden id="fileUpload" />
+              {postContent.length > 0 && (
+                <div onClick={ handleUpload} className={styles.uploadButton}>Post</div>
+              )}
+            </div>
+          </div>
+        </DashboardLayout>
+      </UserLayout>
+    );
   } else {
-
     return (
       <UserLayout>
         <DashboardLayout>
           <h2>Loading</h2>
         </DashboardLayout>
       </UserLayout>
-    )
-
-
-}
+    );
+  }
 }
