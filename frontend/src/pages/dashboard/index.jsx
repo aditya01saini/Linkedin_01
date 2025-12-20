@@ -1,5 +1,5 @@
 import { getAboutUser, getAllUsers } from "@/config/redux/action/authAction";
-import { getAllPosts } from "@/config/redux/action/postAction";
+import { createPost, getAllPosts } from "@/config/redux/action/postAction";
 import DashboardLayout from "@/layout/DashboardLayout";
 import UserLayout from "@/layout/UserLayout";
 import { useRouter } from "next/router";
@@ -13,7 +13,6 @@ export default function dashboard() {
   const dispatch = useDispatch();
 
   const authState = useSelector((state) => state.auth);
-  // const [isTokenThere, setIsTokenThere] = useState(false);
 
   useEffect(() => {
     if (authState.isTokenThere) {
@@ -27,9 +26,11 @@ export default function dashboard() {
   }, [authState.isTokenThere]);
 
   const [postContent, setPostContent] = useState("");
-  const [fileContent, setFileContent] = useState();
+  const [fileContent, setFileContent] = useState("");
   const handleUpload = async () => {
     await dispatch(createPost({file: fileContent, body: postContent}));
+    setPostContent("");
+    setFileContent("");
 
   }
 
@@ -72,7 +73,7 @@ export default function dashboard() {
                 </div>
               </label>
               <input  onChange={(e) => setFileContent(e.target.files[0])}type="file" hidden id="fileUpload" />
-              {postContent.length > 0 && (
+              {postContent.length > 0 &&(
                 <div onClick={ handleUpload} className={styles.uploadButton}>Post</div>
               )}
             </div>
