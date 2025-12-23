@@ -13,6 +13,7 @@ export default function dashboard() {
   const dispatch = useDispatch();
 
   const authState = useSelector((state) => state.auth);
+  const postState = useSelector((state) => state.postReducer);
 
   useEffect(() => {
     if (authState.isTokenThere) {
@@ -40,6 +41,8 @@ export default function dashboard() {
       <UserLayout>
         <DashboardLayout>
           <div className={styles.scrollComponent}>
+
+            <div className={styles.wraper}>
             <div className={styles.createPostContainer}>
               <img
                 className={styles.userProfile}
@@ -77,6 +80,25 @@ export default function dashboard() {
                 <div onClick={ handleUpload} className={styles.uploadButton}>Post</div>
               )}
             </div>
+
+              <div className={styles.postsContainer}>
+              {postState.posts.map((post) => {
+                return (
+                  <div key={post._id} className={styles.singleCard}>
+                    <div className={styles.singleCard__profileContainer}>
+                      <img className={styles.userProfile} src={`${BASE_URL}/${authState.user.userId.profilePicture}`} alt="" />
+                      <p>{post.userId.name}</p>
+                    </div>
+
+                  </div>
+                )
+
+              })}
+                
+              </div>
+              </div>
+
+
           </div>
         </DashboardLayout>
       </UserLayout>
