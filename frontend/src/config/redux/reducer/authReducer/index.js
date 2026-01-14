@@ -75,7 +75,7 @@ const authSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(getAboutUser.fulfilled, (state, action) => {
-         console.log("PROFILE PAYLOAD", action.payload);
+        //  console.log("PROFILE PAYLOAD", action.payload);
         state.isLoading = false;
         state.isError = false;
         state.profileFetched = true;
