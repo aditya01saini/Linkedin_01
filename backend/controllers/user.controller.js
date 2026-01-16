@@ -5,7 +5,9 @@ import crypto from "crypto";
 import bcrypt from "bcrypt";
 import PDFDocument from "pdfkit";
 import fs from "fs";
+import Post from "../models/posts.model.js";
 import ConnectionRequest from "../models/connections.model.js";
+import Comment from "../models/comments.model.js";
 
 const convertUserDataTOPDF = async (userData) => {
   const doc = new PDFDocument();
@@ -151,11 +153,10 @@ export const updateUserProfile = async (req, res) => {
 
 export const getUserAndProfile = async (req, res) => {
   try {
-     
     const { token } = req.query;
-    
+
     const user = await User.findOne({ token: token });
-    
+
     if (!user) {
       return res.status(404).json({ message: "User not found!" });
     }
@@ -164,9 +165,9 @@ export const getUserAndProfile = async (req, res) => {
       "userId",
       "name email username profilePicture"
     );
-    return res.json({profile: userProfile});
+    return res.json({ profile: userProfile });
   } catch (error) {
-    console.error("ERROR ", error); 
+    console.error("ERROR ", error);
     return res.status(500).json({ message: error.message });
   }
 };
@@ -282,40 +283,68 @@ export const whatAreMyConnections = async (req, res) => {
       connectionId: user._id,
     }).populate("userId", "name username email password");
 
-    return res.json({connections});
+    return res.json({ connections });
   } catch (error) {
     return res.status(500).json({ message: message.error });
   }
 };
 
+export const acceptConnectionRequest = async (req, res) => {
+  const { token, requestId, action_type } = req.body;
 
-export const acceptConnectionRequest = async(req, res) => {
-  const {token, requestId, action_type} = req.body;
-
-  try{
-    const user = await User.findOne({token});
-    if(!user){
-      return res.status(404).json({message: "User not found!"});
+  try {
+    const user = await User.findOne({ token });
+    if (!user) {
+      return res.status(404).json({ message: "User not found!" });
     }
 
-    const connection = await ConnectionRequest.findOne({_id: requestId});
-    if(!connection){
-      return res.status(404).json({message: "Connection not found!"});
+    const connection = await ConnectionRequest.findOne({ _id: requestId });
+    if (!connection) {
+      return res.status(404).json({ message: "Connection not found!" });
     }
 
-     if(action_type === "accept"){
+    if (action_type === "accept") {
       connection.status_accepted = true;
-     }else{
+    } else {
       connection.status_accepted = false;
-     }
+    }
 
-     await connection.save();
-     return res.json({message: "Requested Updated!"});
-
-
-
-  }catch(error){
-    return res.status(500).json({message: error.message});
+    await connection.save();
+    return res.json({ message: "Requested Updated!" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
   }
-}
+};
 
+export const commentPost = async (req, res) => {
+  const { token, post_id, commentBody } = req.body;
+
+  try {
+    const user = await User.findOne({ token: token }).select("_id");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const post = await Post.findOne({
+      _id: post_id,
+    });
+
+    if (!post) {
+      return res.status(404).json({ message: "post not found" });
+    }
+
+    const comment = new Comment({
+      userId: user._id,
+      postId: post_id,
+      body: commentBody,
+    });
+
+    await comment.save();
+    console.log(post_id);
+
+    return res.status(200).json({ message: "Comment Added" });
+  } catch (error) {
+    return res.status(404).json({ message: error.message });
+  }
+};
