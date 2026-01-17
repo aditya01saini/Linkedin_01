@@ -316,35 +316,60 @@ export const acceptConnectionRequest = async (req, res) => {
   }
 };
 
-export const commentPost = async (req, res) => {
-  const { token, post_id, commentBody } = req.body;
+// export const commentPost = async (req, res) => {
+//   const { token, post_id, commentBody } = req.body;
+
+//   try {
+//     const user = await User.findOne({ token: token }).select("_id");
+
+//     if (!user) {
+//       return res.status(404).json({ message: "User not found" });
+//     }
+
+//     const post = await Post.findOne({
+//       _id: post_id,
+//     });
+
+//     if (!post) {
+//       return res.status(404).json({ message: "post not found" });
+//     }
+
+//     const comment = new Comment({
+//       userId: user._id,
+//       postId: post_id,
+//       body: commentBody,
+//     });
+
+//     await comment.save();
+//     console.log(post_id);
+
+//     return res.status(200).json({ message: "Comment Added" });
+//   } catch (error) {
+//     return res.status(404).json({ message: error.message });
+//   }
+// };
+
+
+export const getUserProfileAndUserBasedOnUsername = async(req, res) => {
+  const {username} = req.query;
+  
 
   try {
-    const user = await User.findOne({ token: token }).select("_id");
+    const user = await User.findOne({
+      username
+    })
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
+    if(!user) {
+      return res.status(404).json({message: "User not found"});
+
     }
+    const userProfile = await Profile.findOne({userId: user._id})
+    .populate('userId', "name username email profilePicture")
 
-    const post = await Post.findOne({
-      _id: post_id,
-    });
+    return res.json({"profile": userProfile});
 
-    if (!post) {
-      return res.status(404).json({ message: "post not found" });
-    }
 
-    const comment = new Comment({
-      userId: user._id,
-      postId: post_id,
-      body: commentBody,
-    });
-
-    await comment.save();
-    console.log(post_id);
-
-    return res.status(200).json({ message: "Comment Added" });
-  } catch (error) {
-    return res.status(404).json({ message: error.message });
+  }catch(error) {
+    return res.status(404).json({message: error.message});
   }
-};
+}
