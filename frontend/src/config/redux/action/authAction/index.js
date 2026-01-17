@@ -75,3 +75,36 @@ export const getAllUsers = createAsyncThunk(
     }
   }
 )
+
+export const sendConnectionRequest = createAsyncThunk(
+  "user/sendConnectionRequest",
+  async(user, thunkAPI) => {
+    try {
+      const response = await clientServer.post("/user/send_connection_request", {
+        token: user.token,
+        connectionId: user.user_id
+      })
+
+      return thunkAPI.fulfillWithValue(response.data);
+    }catch(error) {
+return thunkAPI.rejectWithValue(error.message.data.message);
+    }
+  }
+)
+
+
+export const getConnectionsRequest = createAsyncThunk(
+  "user/getConnectionsRequest",
+  async(user, thunkAPI) => {
+    try {
+      const response = await clientServer.get("/user/getConnectionRequest", {
+        paams: {
+          token: user.token
+        }
+      })
+      return thunkAPI.fulfillWithValue(response.data.connections);
+    }catch(error) {
+      return thunkAPI.rejectWithValue(error.response.data.message)
+    }
+  }
+)
