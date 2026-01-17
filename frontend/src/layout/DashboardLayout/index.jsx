@@ -88,9 +88,9 @@ const dispatch = useDispatch();
             </div>
           </div>
 
-          <div className="homeContainer__feedContainer">{children}</div>
+          <div className={styles.homeContainer__feedContainer}>{children}</div>
 
-          <div className="homeContainer__extraContainer">
+          <div className={styles.homeContainer__extraContainer}>
             <h1>Top Profiles</h1>
 
             {authState.all_profiles_fetched && authState.all_users.map((profile) => {
