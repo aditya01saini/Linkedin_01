@@ -12,6 +12,7 @@ import {
   sendConnectionRequest,
   getMyConnectionRequest,
   acceptConnectionRequest,
+  getUserProfileAndUserBasedOnUsername,
 } from "../controllers/user.controller.js";
 
 import multer from "multer";
@@ -44,5 +45,6 @@ router.route("/user/send_connection_request").post(sendConnectionRequest);
 router.route("/user/getConnectionRequests").post(getMyConnectionRequest);
 router.route("/user/user_connection_request").post(whatAreMyConnections);
 router.route("/user/accept_connection_request").post(acceptConnectionRequest);
+router.route("/user/get_profile_based_on_username").get(getUserProfileAndUserBasedOnUsername);
 
 export default router;
