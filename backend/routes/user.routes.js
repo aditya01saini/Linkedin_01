@@ -10,7 +10,7 @@ import {
   downloadProfile,
   whatAreMyConnections,
   sendConnectionRequest,
-  getMyConnectionRequest,
+  getMyConnectionsRequest,
   acceptConnectionRequest,
   getUserProfileAndUserBasedOnUsername,
 } from "../controllers/user.controller.js";
@@ -42,7 +42,7 @@ router.route("/update_profile_data").post(updateProfileData);
 router.route("/user/get_all_users").get(getAllUserProfile);
 router.route("/user/download_resume").get(downloadProfile);
 router.route("/user/send_connection_request").post(sendConnectionRequest);
-router.route("/user/getConnectionRequests").post(getMyConnectionRequest);
+router.route("/user/getConnectionRequests").post(getMyConnectionsRequest);
 router.route("/user/user_connection_request").post(whatAreMyConnections);
 router.route("/user/accept_connection_request").post(acceptConnectionRequest);
 router.route("/user/get_profile_based_on_username").get(getUserProfileAndUserBasedOnUsername);
