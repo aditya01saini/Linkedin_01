@@ -219,7 +219,7 @@ export const downloadProfile = async (req, res) => {
 
     let outputPath = await convertUserDataTOPDF(userProfile);
 
-    return res.json({ message: outputPath });
+    return res.json({ "message": outputPath });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -260,8 +260,8 @@ export const sendConnectionRequest = async (req, res) => {
   }
 };
 
-export const getMyConnectionsRequest = async (req, res) => {
-  const { token } = req.body;
+export const getMyConnectionsRequests = async (req, res) => {
+  const { token } = req.query;
   try {
     const user = await User.findOne({ token });
     if (!user) {
@@ -278,7 +278,7 @@ export const getMyConnectionsRequest = async (req, res) => {
 };
 
 export const whatAreMyConnections = async (req, res) => {
-  const { token } = req.body;
+  const { token } = req.query;
 
   try {
     const user = await User.findOne({ token });
@@ -288,7 +288,7 @@ export const whatAreMyConnections = async (req, res) => {
 
     const connections = await ConnectionRequest.find({
       connectionId: user._id,
-    }).populate("userId", "name username email password");
+    }).populate("userId", "name username email profilePicture");
 
     return res.json({ connections });
   } catch (error) {
