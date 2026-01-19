@@ -94,6 +94,8 @@ export default function MyConnectionsPage() {
               return(
 
               
+              
+              
               <div
                 onClick={() => {
                   router.push(`/view_profile/${user.userId.username}`);
