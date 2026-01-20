@@ -18,6 +18,18 @@ export default function profilePage() {
   const [userPosts, setUserPosts] = useState([]);
 
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [inputData, setInputData] = useState({
+    company: "",
+    position: "",
+    years: "",
+  });
+
+  const handleWorkInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputData({...inputData, [name]: value});
+  };
 
   useEffect(() => {
     dispatch(getAboutUser({ token: localStorage.getItem("token") }));
@@ -128,12 +140,13 @@ export default function profilePage() {
                   </div>
 
                   <div>
-                    <textarea  value={userProfile.bio} onChange={(e) => {
-                      setUserProfile({ ...userProfile, bio: e.target.value});
-                    }}
-
-                    rows={Math.max(3, Math.ceil(userProfile.bio.length / 80))}
-                    style={{width: "100%"}}
+                    <textarea
+                      value={userProfile.bio}
+                      onChange={(e) => {
+                        setUserProfile({ ...userProfile, bio: e.target.value });
+                      }}
+                      rows={Math.max(3, Math.ceil(userProfile.bio.length / 80))}
+                      style={{ width: "100%" }}
                     ></textarea>
                   </div>
                 </div>
@@ -185,18 +198,68 @@ export default function profilePage() {
                     </div>
                   );
                 })}
-
-               
               </div>
-              <button className={Styles.addWorkButton} onClick={() => {
-                  
-                }}>Add Work</button>
+              <button
+                className={Styles.addWorkButton}
+                onClick={() => {
+                  setIsModalOpen(true);
+                }}
+              >
+                Add Work
+              </button>
             </div>
-            {userProfile != authState.user &&  
-              <div  onClick={() => {
-                updateProfileData();
-              }} className={Styles.connectionButton}>Update Profile</div>
-            }
+            {userProfile != authState.user && (
+              <div
+                onClick={() => {
+                  updateProfileData();
+                }}
+                className={Styles.connectionButton}
+              >
+                Update Profile
+              </div>
+            )}
+          </div>
+        )}
+        {isModalOpen && (
+          <div
+            onClick={() => {
+              setIsModalOpen(false);
+            }}
+            className={Styles.commentsContainer}
+          >
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className={Styles.allCommentsContainer}
+            >
+              <input
+                onChange={handleWorkInputChange}
+                className={Styles.inputField}
+                type="text"
+                placeholder="Enter Company"
+                name="company"
+              />
+              <input
+                onChange={handleWorkInputChange}
+                className={Styles.inputField}
+                type="text"
+                placeholder="Enter position"
+                name="position"
+              />
+              <input
+                onChange={handleWorkInputChange}
+                className={Styles.inputField}
+                type="number"
+                placeholder="Years"
+                name="years"
+              />
+
+              <div onClick={() => {
+                setUserProfile({...userProfile, pastWork: [...userProfile.pastWork, inputData]});
+                setIsModalOpen(false);
+              }} className={Styles.addWorksButton}>Add Work</div>
+            </div>
           </div>
         )}
       </DashboardLayout>
