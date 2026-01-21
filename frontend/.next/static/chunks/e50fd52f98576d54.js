@@ -1,0 +1,9 @@
+__turbopack_load_page_chunks__("/my_connections", [
+  "static/chunks/74ab4672520ed2ca.js",
+  "static/chunks/2633773c85525461.js",
+  "static/chunks/b8be0ebaa7e14723.js",
+  "static/chunks/5d76c36f020993b9.js",
+  "static/chunks/4080d63149099fc7.css",
+  "static/chunks/c13aade42c24323c.css",
+  "static/chunks/turbopack-f3c53c716d0c3fee.js"
+])
