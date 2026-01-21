@@ -1,0 +1,323 @@
+/* [project]/src/layout/DashboardLayout/index.module.css [client] (css) */
+.index-module__H6bjfq__homeContainer {
+  display: flex;
+}
+
+.index-module__H6bjfq__homeContainer > div:nth-child(odd) {
+  flex: .2;
+}
+
+.index-module__H6bjfq__homeContainer > div:nth-child(2n) {
+  flex: .6;
+}
+
+.index-module__H6bjfq__homeContainer__leftBar {
+  border-right: 1px solid #e9e1e1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  display: flex;
+}
+
+.index-module__H6bjfq__sideBarOption {
+  cursor: pointer;
+  align-items: center;
+  gap: 1.3rem;
+  width: 80%;
+  min-width: 80%;
+  max-width: 80%;
+  margin: 0 auto;
+  font-size: 1.4rem;
+  transition: all .2s;
+  display: flex;
+}
+
+.index-module__H6bjfq__sideBarOption:hover {
+  transform: scale(1.04);
+}
+
+.index-module__H6bjfq__sideBarOption > svg {
+  min-width: fit-content;
+  height: 1.4em;
+}
+
+.index-module__H6bjfq__homeContainer__extraContainer {
+  border-left: 1px solid #e9e1e1;
+  padding-left: 1.2rem;
+}
+
+.index-module__H6bjfq__homeContainer__feedContainer {
+  padding-inline: .8rem;
+}
+
+.index-module__H6bjfq__mobileNavbar {
+  background: #fff;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 6vh;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.index-module__H6bjfq__mobileNavbar svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .index-module__H6bjfq__homeContainer__extraContainer {
+    display: none;
+  }
+
+  .index-module__H6bjfq__homeContainer {
+    display: block;
+  }
+
+  .index-module__H6bjfq__homeContainer__leftBar {
+    display: none;
+  }
+
+  .index-module__H6bjfq__mobileNavbar {
+    display: flex;
+  }
+
+  .index-module__H6bjfq__homeContainer__feedContainer {
+    padding-bottom: 8vh;
+  }
+}
+
+/* [project]/src/Components/Navbar/styles.module.css [client] (css) */
+.styles-module__dL6Fgq__container {
+  padding: 1.8rem;
+}
+
+.styles-module__dL6Fgq__navBar {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.styles-module__dL6Fgq__navBarOptionContainer {
+  display: flex;
+}
+
+.styles-module__dL6Fgq__buttonJoin {
+  cursor: pointer;
+  color: #fff;
+  cursor: pointer;
+  background: #4f3064;
+  border-radius: 10px;
+  padding-block: .6rem;
+  padding-inline: 1.2rem;
+  font-size: .7rem;
+}
+
+/* [project]/src/pages/profile/index.module.css [client] (css) */
+.index-module__08sLfW__container {
+  border-radius: 17px;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.3rem;
+  display: flex;
+}
+
+.index-module__08sLfW__backDropContainer {
+  background: url("https://images.pexels.com/photos/12192793/pexels-photo-12192793.jpeg?_gl=1*rd0nsq*_ga*Mzk4NTMzNTgyLjE3NjI3ODA0NTY.*_ga_8JE65Q40S6*czE3Njg1NTU1MDIkbzIkZzEkdDE3Njg1NTYxNzIkajQ5JGwwJGgw") 0 0 / cover no-repeat;
+  border-radius: 20px;
+  width: 100%;
+  height: 30vh;
+  position: relative;
+}
+
+.index-module__08sLfW__backDropContainer img {
+  object-fit: cover;
+  text-align: center;
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+  position: absolute;
+  bottom: -30%;
+  left: 8%;
+}
+
+.index-module__08sLfW__backDrop__overlay {
+  object-fit: cover;
+  text-align: center;
+  z-index: 4;
+  cursor: pointer;
+  color: #fff;
+  opacity: 0;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  height: 10em;
+  transition: all .4s;
+  display: flex;
+  position: absolute;
+  bottom: -30%;
+  left: 8%;
+}
+
+.index-module__08sLfW__backDrop__overlay:hover {
+  opacity: .5;
+  background: #000;
+}
+
+.index-module__08sLfW__profileContainer__details {
+  margin-top: 5rem;
+  padding-left: 6.5rem;
+}
+
+.index-module__08sLfW__card {
+  align-items: center;
+  gap: 1.4rem;
+  display: flex;
+}
+
+.index-module__08sLfW__connectBtn {
+  cursor: pointer;
+  color: #fff;
+  background: #b468ee;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  padding-block: .3rem;
+  padding-inline: .8rem;
+}
+
+.index-module__08sLfW__connectedButton {
+  cursor: pointer;
+  color: #b468ee;
+  border: 1px solid #000;
+  border-radius: 10px;
+  outline: none;
+  padding-block: .3rem;
+  padding-inline: .8rem;
+}
+
+.index-module__08sLfW__workHistory {
+  margin-left: 2rem;
+}
+
+.index-module__08sLfW__workHistoryContainer {
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  width: 100%;
+  padding-top: 1.4rem;
+  display: flex;
+}
+
+.index-module__08sLfW__workHistoryCard {
+  border-radius: 10px;
+  min-width: fit-content;
+  padding-block: 1rem;
+  padding-inline: 2.9rem;
+  box-shadow: 10px 10px 15px #adadad;
+}
+
+.index-module__08sLfW__card__profileContainer {
+  display: flex;
+}
+
+.index-module__08sLfW__card__profileContainer > img {
+  object-fit: cover;
+  width: 3.4rem;
+  height: 3.4rem;
+}
+
+.index-module__08sLfW__profileContainer__details input {
+  border-style: none;
+  outline: none;
+  width: fit-content;
+  padding-block: 9px;
+  padding-inline: 10px;
+}
+
+.index-module__08sLfW__nameEdit {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.index-module__08sLfW__connectionButton {
+  cursor: pointer;
+  color: #fff;
+  background: #b468ee;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  width: fit-content;
+  margin-left: 2rem;
+  padding-block: .6rem;
+  padding-inline: 1rem;
+}
+
+.index-module__08sLfW__profileContainer__details textarea {
+  border: none;
+  outline: none;
+  padding-block: 9px;
+  padding-inline: 10px;
+  font-size: 1.1rem;
+  font-family: Poppins !important;
+}
+
+.index-module__08sLfW__addWorkButton {
+  cursor: pointer;
+  background: #fff;
+  border: 1px dotted gray;
+  border-radius: 12px;
+  margin-top: 2rem;
+  padding-block: 1rem;
+  padding-inline: 1.3rem;
+}
+
+.index-module__08sLfW__commentsContainer {
+  z-index: 5;
+  background: #000000b3;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.index-module__08sLfW__allCommentsContainer {
+  background: #fff;
+  border-radius: 20px;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 60vh;
+  height: fit-content;
+  padding: 1.4rem;
+  display: flex;
+  position: relative;
+}
+
+.index-module__08sLfW__inputField {
+  border: 1px solid silver;
+  border-radius: 10px;
+  outline: none;
+  width: 100%;
+  padding-block: .8rem;
+  padding-inline: 1.3rem;
+}
+
+.index-module__08sLfW__addWorksButton {
+  cursor: pointer;
+  color: #fff;
+  background: #4a38e8;
+  border-radius: 10px;
+  outline: none;
+  width: fit-content;
+  padding-block: .3rem;
+  padding-inline: .8rem;
+}
+
+/*# sourceMappingURL=src_4930273d._.css.map*/

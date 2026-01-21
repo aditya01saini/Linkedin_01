@@ -1,0 +1,70 @@
+/* [project]/src/styles/Home.module.css [client] (css) */
+.Home-module__Ho9lYW__container {
+  padding: 1.2rem;
+  font-family: Poppins;
+}
+
+.Home-module__Ho9lYW__mainContainer {
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+  height: 80vh;
+  padding-inline: 2rem;
+  display: flex;
+}
+
+.Home-module__Ho9lYW__mainContainer__left, .Home-module__Ho9lYW__mainContainer__right {
+  flex: .5;
+}
+
+.Home-module__Ho9lYW__mainContainer__left > p:first-child {
+  -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(45deg, #000, #b2b2b2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 2.9rem;
+  font-weight: bold;
+}
+
+.Home-module__Ho9lYW__mainContainer__left > p:nth-child(2) {
+  color: #4d4d4d;
+  font-size: 1.7rerm;
+}
+
+.Home-module__Ho9lYW__mainContainer__left > div.Home-module__Ho9lYW__buttonJoin {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  color: #fff;
+  background: #4f3064;
+  border-radius: 10px;
+  width: fit-content;
+  margin-top: .8rem;
+  padding-block: .8rem;
+  padding-inline: 1.2rem;
+  font-size: 1.5rem;
+  transition: all .2s;
+}
+
+@media screen and (max-width: 600px) {
+  .Home-module__Ho9lYW__mainContainer {
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 1.3rem;
+  }
+
+  .Home-module__Ho9lYW__mainContainer__left {
+    flex: 1;
+    padding-top: 1.5rem;
+  }
+
+  .Home-module__Ho9lYW__mainContainer__right {
+    flex: 1;
+  }
+
+  .Home-module__Ho9lYW__mainContainer__right img {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=src_styles_Home_module_css_65f1660e._.single.css.map*/

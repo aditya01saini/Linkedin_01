@@ -1,0 +1,22 @@
+/* [project]/frontend/src/pages/discover/index.module.css [client] (css) */
+.index-module__DOvhBW__allUserProfile {
+  align-items: center;
+  gap: 1.3rem;
+  max-width: 80%;
+}
+
+.index-module__DOvhBW__userCard {
+  cursor: pointer;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.3rem;
+  display: flex;
+  box-shadow: 10px 10px 10px #8888a0;
+}
+
+.index-module__DOvhBW__userCard__image {
+  border-radius: 50%;
+  width: 10%;
+}
+
+/*# sourceMappingURL=frontend_src_pages_discover_index_module_css_65f1660e._.single.css.map*/

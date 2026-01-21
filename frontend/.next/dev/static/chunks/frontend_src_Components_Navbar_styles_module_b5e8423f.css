@@ -1,0 +1,27 @@
+/* [project]/frontend/src/Components/Navbar/styles.module.css [client] (css) */
+.styles-module__5nOGGW__container {
+  padding: 1.8rem;
+}
+
+.styles-module__5nOGGW__navBar {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.styles-module__5nOGGW__navBarOptionContainer {
+  display: flex;
+}
+
+.styles-module__5nOGGW__buttonJoin {
+  cursor: pointer;
+  color: #fff;
+  cursor: pointer;
+  background: #4f3064;
+  border-radius: 10px;
+  padding-block: .6rem;
+  padding-inline: 1.2rem;
+  font-size: .7rem;
+}
+
+/*# sourceMappingURL=frontend_src_Components_Navbar_styles_module_b5e8423f.css.map*/

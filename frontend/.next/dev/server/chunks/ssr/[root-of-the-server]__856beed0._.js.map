@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 22, "column": 0}, "map": {"version":3,"sources":["file:///D:/linkedin/frontend/src/pages/view_profile/%5Busername%5D.jsx"],"sourcesContent":["import { useSearchParams } from 'next/navigation';\r\nimport React from 'react';\r\n\r\nexport default function viewProfilePage() {\r\n\r\nconst searchParamers = useSearchParams();\r\n\r\n\r\n  return (\r\n    <div>\r\n       viewProfilePage\r\n    </div>\r\n  );\r\n}\r\n\r\n\r\n\r\nexport async function getServerSideProps() {\r\n  return {props: {data}}\r\n}"],"names":[],"mappings":";;;;;;;AAAA;AACA;;;;AAEe,SAAS;IAExB,MAAM,iBAAiB,IAAA,0JAAe;IAGpC,qBACE,qKAAC;kBAAI;;;;;;AAIT;AAIO,eAAe;IACpB,OAAO;QAAC,OAAO;YAAC;QAAI;IAAC;AACvB"}}]
+}
