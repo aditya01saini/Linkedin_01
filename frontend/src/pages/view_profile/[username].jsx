@@ -97,7 +97,7 @@ export default function viewProfilePage({ userProfile }) {
             />
           </div>
           <div className={Styles.profileContainer__details}>
-            <div style={{ display: "flex", gap: "0.7rem" }}>
+            <div className={Styles.profileContainer__flex}>
               <div style={{ flex: "0.8" }}>
                 <div
                   style={{
