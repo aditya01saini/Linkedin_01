@@ -7,7 +7,6 @@ import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
 import UserLayout from "@/layout/UserLayout";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -18,35 +17,32 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
-
 export default function Home() {
-const router  = useRouter();
+  const router = useRouter();
 
   return (
     <UserLayout>
-    <div className={styles.container}>
+      <div className={styles.container}>
+        <div className={styles.mainContainer}>
+          <div className={styles.mainContainer__left}>
+            <p>Connect with Friends without Exaggeration</p>
+            <p>A True Social media Platform, with stories no blufs !</p>
 
-      <div className={styles.mainContainer}>
-
-        <div className={styles.mainContainer__left}>
-          <p>Connect with Friends without Exaggeration</p>
-          <p>A True Social media Platform, with stories no blufs !</p>
-
-          <div onClick={() => {
-            router.push("/login")
-          }}className={styles.buttonJoin}>
-            <p>Join Now</p>
+            <div
+              onClick={() => {
+                router.push("/login");
+              }}
+              className={styles.buttonJoin}
+            >
+              <p>Join Now</p>
+            </div>
           </div>
 
-        </div>
-
-        <div className={styles.mainContainer__right}>
-          <img src="images/cycle (2).png" alt="" />
-
+          <div className={styles.mainContainer__right}>
+            <img src="images/cycle (2).png" alt="" />
+          </div>
         </div>
       </div>
-    </div>
     </UserLayout>
   );
 }
