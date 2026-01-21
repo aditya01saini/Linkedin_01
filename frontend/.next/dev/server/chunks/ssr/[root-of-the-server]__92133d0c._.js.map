@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///D:/linkedin/frontend/src/layout/UserLayout/index.jsx"],"sourcesContent":["import React from 'react';\r\n\r\nexport default function UserLayout( {children} ) {\r\n  return (\r\n    <div>\r\n        <NavBarComponent/>\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;AAAA;;;AAEe,SAAS,WAAY,EAAC,QAAQ,EAAC;IAC5C,qBACE,qKAAC;;0BACG,qKAAC;;;;;YACF;;;;;;;AAGP"}},
-    {"offset": {"line": 32, "column": 0}, "map": {"version":3,"sources":["file:///D:/linkedin/frontend/src/pages/login/index.jsx"],"sourcesContent":["import UserLayout from '@/layout/UserLayout';\r\nimport React from 'react';\r\n\r\nexport default function LoginComponent() {\r\n  return (\r\n    <div>\r\n      <UserLayout>\r\n        <h2>login</h2>\r\n      </UserLayout>\r\n    </div>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;AAAA;AACA;;;;AAEe,SAAS;IACtB,qBACE,qKAAC;kBACC,cAAA,qKAAC,qJAAU;sBACT,cAAA,qKAAC;0BAAG;;;;;;;;;;;;;;;;AAIZ"}}]
-}

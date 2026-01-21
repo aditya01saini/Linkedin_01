@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///D:/linkedin/frontend/src/pages/_app.js"],"sourcesContent":["import \"@/styles/globals.css\";\nimport {store} from \"@/config/redux/\"\n\nexport default function App({ Component, pageProps }) {\n  return <>\n  <Provider store={store}>\n    <Component {...pageProps}/>\n  </Provider>\n  \n   </>\n}\n"],"names":[],"mappings":";;;;;;;;;;;;;AAGe,SAAS,IAAI,EAAE,SAAS,EAAE,SAAS,EAAE;IAClD,qBAAO;kBACP,cAAA,qKAAC;YAAS,OAAO;sBACf,cAAA,qKAAC;gBAAW,GAAG,SAAS;;;;;;;;;;;;AAI5B"}}]
-}
