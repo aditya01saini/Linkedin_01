@@ -108,11 +108,24 @@
 
 .workHistoryCard {
   min-width: fit-content;
-  padding-inline: 2.5rem;
+  padding-inline: 2.9rem;
   padding-block: 1rem;
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgb(173, 173, 173);
 }
+.card__profileContainer {
+  display: flex;
+}
+
+.card__profileContainer > img {
+  width: 3.4rem;
+  height: auto;
+  height: 3.4rem;
+  object-fit: cover;
+}
+
+
+
 
 .profileContainer__details input {
   outline: none;
